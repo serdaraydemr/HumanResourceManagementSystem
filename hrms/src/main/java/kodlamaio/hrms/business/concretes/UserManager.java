@@ -26,37 +26,37 @@ public class UserManager implements UserService {
 
 	@Override
 	public DataResult<List<User>> getAll() {
-		return new SuccessDataResult<List<User>>(this.userDao.findAll(), "Users are Listed");
+		return new SuccessDataResult<List<User>>(this.userDao.findAll(), "Kullanıcılar Listelendi");
 	}
 
 
 	@Override
 	public Result add(User user) {
 		this.userDao.save(user);
-		return new SuccessResult("User is Added");
+		return new SuccessResult("Kullanıcı EKlendi!");
 	}
 
 
 	@Override
 	public Result update(int id, User user) {
 		if(userDao.getOne(id) == null) {
-			return new ErrorResult("User Does not Exist");
+			return new ErrorResult("Kullanıcı Yok!");
 		}
 		
 		userDao.save(user);
 		
-		return new SuccessResult("User is Updated");
+		return new SuccessResult("Kullanıcı Güncellendi");
 	}
 	
 	@Override
 	public Result delete(int id) {
 		if(userDao.getOne(id) == null) {
-			return new ErrorResult("Id of User is Null");
+			return new ErrorResult("Kullanıcı ID Boş Bırakılamaz!");
 		}
 		
 		userDao.deleteById(id);
 
-		return new SuccessResult("User is Deleted");
+		return new SuccessResult("Kullanıcı silindi!");
 	}
 
 }
