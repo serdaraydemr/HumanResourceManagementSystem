@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -31,6 +32,7 @@ public class Language {
 	@Column(name="languages_name")
 	private String languagesName;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="language")
 	private List<ApplicantLanguage> applicantLanguage;
 
